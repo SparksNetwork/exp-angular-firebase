@@ -23,6 +23,9 @@ Goal: to have a single repo that includes:
 1. paste firebase-function dependencies back into package.json
 1. update version of all angular packages from ^4.0.0 to ^4.2.4
 1. perform steps in [this handy blog post](https://medium.com/@evertonrobertoauler/angular-4-universal-app-with-angular-cli-db8b53bba07d) to make angular app universal
+1. create separate `/functions/fn` with `src` and `dist` to hold actual firebase-functions
+1. replace `/functions/index.js` firebase-functions entry point so it just re-exports `/functions/fn/dist`
+1. create separate `tsconfig.functions.json` for ts compiler options for firebase-functions
 
 # File Structure
 
