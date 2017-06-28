@@ -1,5 +1,7 @@
 # Experimental monorepo for client & server components
 
+[NOW SERVING WIP HERE](https://sparks-development-sd.firebaseapp.com/)
+
 Goal: to have a single repo that includes:
 
 * Angular2 app that can be compiled and rendered on server
@@ -8,10 +10,12 @@ Goal: to have a single repo that includes:
 ## Requirements
 
 - [X] Firebase-functions http handler that does server-side rendering of an angular app
-- [ ] Firebase-hosting that redirects to that firebase-functions http hander
+- [X] Firebase-hosting that redirects to that firebase-functions http hander
 - [X] Firebase-functions and angular app can share code
 - [X] Typescript for firebase-functions
-- [ ] Single package.json that includes all dependencies for client and server build and deployment
+- [X] Single package.json that includes all dependencies for client and server build and deployment
+- [ ] API functions exposed via firebase-hosting on same domain as client
+- [ ] dynamic opengraph tags included in ssr'd client (see https://github.com/vinaygopinath/ng2-meta or https://github.com/ngx-meta/core) 
 - [ ] Angular app supports i18n
 - [ ] npm commands that manage development and deployment
 
@@ -29,6 +33,8 @@ Goal: to have a single repo that includes:
 1. create separate `tsconfig.functions.json` for ts compiler options for firebase-functions
 1. replace `/functions/index.js` firebase-functions entry point so it just re-exports `/functions/fn/dist/fn/src`
 1. create `/functions/shared` directory for ts used by client and server build, NOTE: must have code here otherwise prev step re-exports differently
+1. remove `/public/index.html` to prevent default page from being served by hosting
+1. update `/firebase.json` to include rule to redirect to `client` function
 
 # File Structure
 
