@@ -7,11 +7,13 @@ Goal: to have a single repo that includes:
 
 ## Requirements
 
-- [ ] Firebase-hosted app that does server-side rendering of an angular app
+- [ ] Firebase-functions http handler that does server-side rendering of an angular app
+- [ ] Firebase-hosting that redirects to that firebase-functions http hander
 - [X] Firebase-functions and angular app can share code
 - [X] Typescript for firebase-functions
 - [ ] Single package.json that includes all dependencies for client and server build and deployment
 - [ ] Angular app supports i18n
+- [ ] npm commands that manage development and deployment
 
 # Creation Steps
 
@@ -24,8 +26,9 @@ Goal: to have a single repo that includes:
 1. update version of all angular packages from ^4.0.0 to ^4.2.4
 1. perform steps in [this handy blog post](https://medium.com/@evertonrobertoauler/angular-4-universal-app-with-angular-cli-db8b53bba07d) to make angular app universal
 1. create separate `/functions/fn` with `src` and `dist` to hold actual firebase-functions
-1. replace `/functions/index.js` firebase-functions entry point so it just re-exports `/functions/fn/dist`
 1. create separate `tsconfig.functions.json` for ts compiler options for firebase-functions
+1. replace `/functions/index.js` firebase-functions entry point so it just re-exports `/functions/fn/dist/fn/src`
+1. create `/functions/shared` directory for ts used by client and server build, NOTE: must have code here otherwise prev step re-exports differently
 
 # File Structure
 
