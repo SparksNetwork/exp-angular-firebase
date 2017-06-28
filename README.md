@@ -22,7 +22,7 @@ Goal: to have a single repo that includes:
 1. `cd functions`
 1. paste firebase-function dependencies back into package.json
 1. update version of all angular packages from ^4.0.0 to ^4.2.4
-1. `npm install @angular/platform-server`
+1. perform steps in [this handy blog post](https://medium.com/@evertonrobertoauler/angular-4-universal-app-with-angular-cli-db8b53bba07d) to make angular app universal
 
 # File Structure
 
@@ -32,8 +32,13 @@ Goal: to have a single repo that includes:
   database.rules.json # firebase settings
   /functions # directory deployed to firebase-functions
     package.json # packages referenced by client & server build
-    index.js # entry point for firebase-functions deployment
+    index.js # functions entry point re-exports functions/
     /node_modules
+    /src # client source
+    /dist # client build
+    /functions # where the actual firebase-functions live
+      /src # functions source
+      /dist # functions build
   /public # static assets served by firebase hosting
 
 ```
