@@ -7,7 +7,7 @@ Goal: to have a single repo that includes:
 
 ## Requirements
 
-- [ ] Firebase-functions http handler that does server-side rendering of an angular app
+- [X] Firebase-functions http handler that does server-side rendering of an angular app
 - [ ] Firebase-hosting that redirects to that firebase-functions http hander
 - [X] Firebase-functions and angular app can share code
 - [X] Typescript for firebase-functions
