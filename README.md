@@ -7,9 +7,9 @@ Goal: to have a single repo that includes:
 
 ## Requirements
 
-* Firebase-hosted app that does server-side rendering of an angular app
-* Firebase-functions and angular app can share code
-* Typescript for firebase-functions
-* Single package.json that includes all dependencies for client and server build and deployment
-* Angular app supports i18n
+- [ ] Firebase-hosted app that does server-side rendering of an angular app
+- [ ] Firebase-functions and angular app can share code
+- [ ] Typescript for firebase-functions
+- [ ] Single package.json that includes all dependencies for client and server build and deployment
+- [ ] Angular app supports i18n
 
