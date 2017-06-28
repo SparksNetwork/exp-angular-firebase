@@ -3,6 +3,7 @@
     "experimentalDecorators": true,
     "module": "commonjs",
     "outDir": "./fn/dist",
+    "rootDir": ".",
     "moduleResolution": "node",
     "target": "es6",
     "strictNullChecks": true,
