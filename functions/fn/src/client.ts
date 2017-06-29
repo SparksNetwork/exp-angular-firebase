@@ -11,7 +11,8 @@ enableProdMode();
 
 const app = express();
 
-let template = readFileSync(join(__dirname, '..', '..', '..', '..', 'dist', 'index.html')).toString();
+const assetPath = join(__dirname, '..', '..', '..', '..', 'dist')
+let template = readFileSync(join(assetPath, 'index.html')).toString();
 
 app.engine('html', (_, options, callback) => {
   const opts = { document: template, url: options.req.url };
@@ -23,7 +24,7 @@ app.engine('html', (_, options, callback) => {
 app.set('view engine', 'html');
 app.set('views', 'src')
 
-app.get('*.*', express.static(join(__dirname, '..', '..', 'public')));
+app.get('*.*', express.static(assetPath));
 
 app.get('*', (req, res) => {
   res.render('index', { req });
