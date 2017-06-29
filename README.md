@@ -7,6 +7,14 @@ Goal: to have a single repo that includes:
 * Angular2 app that can be compiled and rendered on server
 * Firebase-functions that can both serve the compiled app, as well as backend API consumed by client
 
+## Use
+
+`npm run serve` to run local development server with hot reload
+
+`npm start` to build and run compiled app locally
+
+`npm run deploy` to build and deploy to cloud
+
 ## Requirements
 
 - [X] Firebase-functions http handler that does server-side rendering of an angular app
@@ -17,7 +25,7 @@ Goal: to have a single repo that includes:
 - [ ] API functions exposed via firebase-hosting on same domain as client
 - [X] dynamic opengraph tags included in ssr'd client (incl in angular 4)
 - [ ] Angular app supports i18n
-- [ ] npm commands that manage development and deployment
+- [X] npm commands that manage development and deployment
 
 # Creation Steps
 
