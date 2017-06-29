@@ -26,6 +26,7 @@ Goal: to have a single repo that includes:
 - [X] dynamic opengraph tags included in ssr'd client (incl in angular 4)
 - [ ] Angular app supports i18n (https://github.com/angular/angular-cli/wiki/stories-internationalization)
 - [X] npm commands that manage development and deployment
+- [ ] shared code describing domain objects, providing angularfire wrapper + rest calls on client, and http handlers on server
 
 # Creation Steps
 
