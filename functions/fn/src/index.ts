@@ -1,2 +1,2 @@
 export * from './client'
-export * from './helloWorld'
+export * from './api'

@@ -11,6 +11,7 @@
     "predeploy": "npm run build",
     "deploy": "firebase deploy",
     "serve": "ng serve",
+    "serve:server": "npm run build:server && firebase serve --only functions",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
