@@ -15,7 +15,7 @@ Goal: to have a single repo that includes:
 - [X] Typescript for firebase-functions
 - [X] Single package.json that includes all dependencies for client and server build and deployment
 - [ ] API functions exposed via firebase-hosting on same domain as client
-- [ ] dynamic opengraph tags included in ssr'd client (see https://github.com/vinaygopinath/ng2-meta or https://github.com/ngx-meta/core) 
+- [X] dynamic opengraph tags included in ssr'd client (incl in angular 4)
 - [ ] Angular app supports i18n
 - [ ] npm commands that manage development and deployment
 
