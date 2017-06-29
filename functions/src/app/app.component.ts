@@ -14,8 +14,8 @@ import { foo } from '../../shared/foo';
 </div>
 <div style='text-align:center'>
   <a routerLink='/home'>Home</a> |
-  <a routerLink='/thing/1'>Thing 1</a> |
-  <a routerLink='/thing/2'>Thing 2</a>
+  <a [routerLink]="['thing', '1']">Thing 1</a> |
+  <a [routerLink]="['thing', '2']">Thing 2</a>
 </div>
 <router-outlet></router-outlet>
 `,
