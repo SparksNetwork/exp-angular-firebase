@@ -24,7 +24,7 @@ Goal: to have a single repo that includes:
 - [X] Single package.json that includes all dependencies for client and server build and deployment
 - [ ] API functions exposed via firebase-hosting on same domain as client
 - [X] dynamic opengraph tags included in ssr'd client (incl in angular 4)
-- [ ] Angular app supports i18n
+- [ ] Angular app supports i18n (https://github.com/angular/angular-cli/wiki/stories-internationalization)
 - [X] npm commands that manage development and deployment
 
 # Creation Steps
