@@ -22,18 +22,18 @@ export class ThingDetailComponent {
 
   ngOnInit() {
     this.thing = this.route.params
-      .map((params: Params) => ({id: params['id']}))
+      .map((params: Params) => ({name: params['id']}))
 
     this.thing.subscribe((thing: Thing) => {
       this.meta.updateTag({
-        content: 'Thing ' + thing.id,
+        content: 'Thing ' + thing.name,
       },
-      "property='og:title'"
+      'property="og:title"'
       )
       this.meta.updateTag({
-        content: 'This is description for Thing ' + thing.id,
+        content: 'This is description for Thing ' + thing.name,
       },
-      "property='og:description'"
+      'property="og:description"'
       )
     })
   }

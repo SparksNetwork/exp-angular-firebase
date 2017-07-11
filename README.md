@@ -9,7 +9,9 @@ Goal: to have a single repo that includes:
 
 ## Use
 
-`npm run serve` to run local development server with hot reload
+`npm run serve` to run local development server with hot reload.  Note this actually talks to deployed firebase-functions!
+
+`npm run server:server` to run firebase-functions only
 
 `npm start` to build and run compiled app locally
 
