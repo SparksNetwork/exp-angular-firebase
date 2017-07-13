@@ -2,29 +2,31 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Meta } from '@angular/platform-browser';
 
-import { Thing } from './thing.model';
-
 import { Observable } from 'rxjs';
-import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
+
+import {
+  ThingRecord,
+  ThingService,
+} from '../../../shared/thing/client'
 
 @Component({
   selector: 'thing-detail',
   template: `
 <div>
-  <h2>Thing: {{(thing | async).id}}</h2>
+  <h2>Thing: {{(thing | async).name}}</h2>
 </div>
 `
 })
 export class ThingDetailComponent {
-  public thing: Observable<Thing>;
+  public thing: Observable<ThingRecord>;
 
-  constructor(private route: ActivatedRoute, private meta: Meta) {}
+  constructor(private things: ThingService, private route: ActivatedRoute, private meta: Meta) {
+    this.thing = route.params.flatMap(p => things.one(p.id))
+  }
 
   ngOnInit() {
-    this.thing = this.route.params
-      .map((params: Params) => ({name: params['id']}))
-
-    this.thing.subscribe((thing: Thing) => {
+    this.thing.subscribe((thing: ThingRecord) => {
       this.meta.updateTag({
         content: 'Thing ' + thing.name,
       },

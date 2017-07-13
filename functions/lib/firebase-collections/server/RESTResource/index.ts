@@ -15,8 +15,7 @@ type Handler = (cmd: Command) => any
 export class RESTResource<
   TCmdCreate extends ValuesCommand,
   TCmdReplace extends KeyValuesCommand,
-  TCmdUpdate extends KeyValuesCommand,
-  TCmdDelete extends KeyCommand> {
+  TCmdUpdate extends KeyValuesCommand> {
   public router: express.Router
 
   constructor(public apiRoot: string, public collectionRef: CollectionReference) {
@@ -24,11 +23,10 @@ export class RESTResource<
     this.router.use(bodyparser.json())
     this.router.route(`**${this.apiRoot}`)
       .post((req, res, next) => this.handle(req, res, next, cmd => this.create(cmd as TCmdCreate)))
-    // "Real" REST - this simplifies by sharing Cmd types between client and server
-    // this.router.route(`**${this.apiRoot}/:id`)
-      .put((req, res, next) => this.handle(req, res, next, cmd => this.replace(cmd as TCmdReplace)))
-      .patch((req, res, next) => this.handle(req, res, next, cmd => this.update(cmd as TCmdUpdate)))
-      .delete((req, res, next) => this.handle(req, res, next, cmd => this.delete(cmd as TCmdDelete)))
+    this.router.route(`**${this.apiRoot}/:key`)
+      .put((req, res, next) => this.handle(req, res, next, cmd => this.replace(req.params.key, cmd as TCmdReplace)))
+      .patch((req, res, next) => this.handle(req, res, next, cmd => this.update(req.params.key, cmd as TCmdUpdate)))
+      .delete((req, res, next) => this.handle(req, res, next, cmd => this.delete(req.params.key)))
   }
 
   public async handle(req: express.Request, res, next, handler: Handler) {
@@ -42,15 +40,15 @@ export class RESTResource<
   }
 
   public create(cmd: TCmdCreate) {
-    return this.collectionRef.push(cmd.values).then(ref => ref.key)
+    return this.collectionRef.push(cmd).then(ref => ref.key)
   }
-  public replace(cmd: TCmdReplace) {
-    return this.collectionRef.set(cmd.key, cmd.values)
+  public replace(key: string, cmd: TCmdReplace) {
+    return this.collectionRef.set(key, cmd)
   }
-  public update(cmd: TCmdUpdate) {
-    return this.collectionRef.update(cmd.key, cmd.values)
+  public update(key: string, cmd: TCmdUpdate) {
+    return this.collectionRef.update(key, cmd)
   }
-  public delete(cmd: TCmdDelete) {
-    return this.collectionRef.delete(cmd.key)
+  public delete(key: string) {
+    return this.collectionRef.delete(key)
   }
 }

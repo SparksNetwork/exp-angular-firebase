@@ -32,6 +32,10 @@ export class BaseClientService<
     this.url = this.collection.apiRoot
   }
 
+  public all(): FirebaseListObservable<TRecord[]> {
+    return this.db.list(this.collection.firebasePath)
+  }
+
   public by(orderByChild: string, equalTo: string): FirebaseListObservable<TRecord[]> {
     return this.db.list(this.collection.firebasePath, { query: { orderByChild, equalTo } })
   }
@@ -44,32 +48,16 @@ export class BaseClientService<
     return this.http.post(this.url, JSON.stringify(cmd), JSON_HEADERS)
   }
 
-  public replace(cmd: TCmdReplace) {
-    return this.http.put(this.url, JSON.stringify(cmd), JSON_HEADERS)
+  public replace(key: string, cmd: TCmdReplace) {
+    return this.http.put(`${this.url}/${key}`, JSON.stringify(cmd), JSON_HEADERS)
   }
 
-  public update(cmd: TCmdUpdate) {
-    return this.http.patch(this.url, JSON.stringify(cmd), JSON_HEADERS)
+  public update(key: string, cmd: TCmdUpdate) {
+    return this.http.patch(`${this.url}/${key}`, JSON.stringify(cmd), JSON_HEADERS)
   }
 
-  public delete(cmd: TCmdDelete) {
-    return this.http.delete(this.url, JSON_HEADERS)
+  public delete(key: string) {
+    return this.http.delete(`${this.url}/${key}`, JSON_HEADERS)
   }
 
-// "Real" REST
-  // public create(cmd: TCmdCreate) {
-  //   return this.http.post(this.collection.apiRoot, cmd.values)
-  // }
-
-  // public replace(cmd: TCmdReplace) {
-  //   return this.http.put(`${this.collection.apiRoot}/${cmd.key}`, cmd.values)
-  // }
-
-  // public update(cmd: TCmdUpdate) {
-  //   return this.http.patch(`${this.collection.apiRoot}/${cmd.key}`, cmd.values)
-  // }
-
-  // public delete(cmd: TCmdDelete) {
-  //   return this.http.delete(`${this.collection.apiRoot}/${cmd.key}`)
-  // }
 }

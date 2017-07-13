@@ -16,8 +16,7 @@ export const ThingReference = new Reference(admin.database(), ThingCollection.fi
 export class Resource extends RESTResource<
   ThingCmdCreate,
   ThingCmdReplace,
-  ThingCmdUpdate,
-  ThingCmdDelete> {
+  ThingCmdUpdate> {
   public create(cmd: ThingCmdCreate) {
     // auth and stuff
     return super.create(cmd)
